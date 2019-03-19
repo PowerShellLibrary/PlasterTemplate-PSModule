@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1"
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>PowerShellModule</name>
+    <id>aafb7dd4-23af-4e9b-9394-066ec8fe9c16</id>
+    <version>1.0.0</version>
+    <title>PowerShellModule</title>
+    <description></description>
+    <author>Alan Płócieniak</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name='Author' type="user-fullname" prompt="Module author's name" />
+    <parameter name='ModuleName' type="text" prompt="Module name" />
+    <parameter name='ModuleVersion' type="text" prompt="Module version" default='1.0.0' />
+    <parameter name='ModuleDescription' type="text" prompt="Module description" />
+  </parameters>
+  <content>
+    <message>Creating test folder and files</message>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Public'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Private'/>
+    <templateFile source='template\psd1.psd1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' />
+    <file source='template\psm1.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' />
+  </content>
+</plasterManifest>
