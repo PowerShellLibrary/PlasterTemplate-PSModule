@@ -29,6 +29,7 @@
     <templateFile source='template\psd1.psd1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' />
     <file source='template\psm1.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' />
     <message condition='$PLASTER_PARAM_Tests -eq "Yes"'>Creating test folder and file</message>
+    <requireModule name="Pester" minimumVersion="3.4.0" message="Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 3.4.0/>
     <file source='' destination='${PLASTER_PARAM_ModuleName}\Tests' condition='$PLASTER_PARAM_Tests -eq "Yes"'/>
     <templateFile source='template\tests.ps1' destination='${PLASTER_PARAM_ModuleName}\Tests\${PLASTER_PARAM_ModuleName}.Tests.ps1' condition='$PLASTER_PARAM_Tests -eq "Yes"'/>
     <message>Creating README.md</message>
