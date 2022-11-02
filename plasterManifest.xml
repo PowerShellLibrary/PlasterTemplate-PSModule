@@ -12,16 +12,26 @@
   </metadata>
   <parameters>
     <parameter name='Author' type="user-fullname" prompt="Module author's name" />
+    <parameter name='AuthorEmail' type="user-email" prompt="Contributer/Owner email" />
     <parameter name='ModuleName' type="text" prompt="Module name" />
     <parameter name='ModuleVersion' type="text" prompt="Module version" default='1.0.0' />
     <parameter name='ModuleDescription' type="text" prompt="Module description" />
+    <parameter name='Tests' type = 'choice' prompt='Add Tests?' default='0'>
+      <choice label='&amp;Yes' value='Yes' help='Adds Tests folder'/>
+      <choice label='&amp;No' value='No' help='Does not adds Tests folder'/>
+    </parameter>
   </parameters>
   <content>
-    <message>Creating test folder and files</message>
-    <file source='' destination='${PLASTER_PARAM_ModuleName}'/>
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Public'/>
-    <file source='' destination='${PLASTER_PARAM_ModuleName}\Private'/>
-    <templateFile source='template\psd1.psd1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' />
-    <file source='template\psm1.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' />
+    <message>Creating module folder and files</message>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\Public'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\Private'/>
+    <templateFile source='template\psd1.psd1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' />
+    <file source='template\psm1.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' />
+    <message condition='$PLASTER_PARAM_Tests -eq "Yes"'>Creating test folder and file</message>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Tests' condition='$PLASTER_PARAM_Tests -eq "Yes"'/>
+    <templateFile source='template\tests.ps1' destination='${PLASTER_PARAM_ModuleName}\Tests\${PLASTER_PARAM_ModuleName}.Tests.ps1' condition='$PLASTER_PARAM_Tests -eq "Yes"'/>
+    <message>Creating README.md</message>
+    <templateFile source='template\README.md' destination='${PLASTER_PARAM_ModuleName}\README.md' />
   </content>
 </plasterManifest>
