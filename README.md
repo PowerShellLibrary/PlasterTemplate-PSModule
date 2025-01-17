@@ -9,19 +9,19 @@ This is a Plaster template for a PowerShell module.
 Module is available on [Powershell Gallery][gallery]
 
 ``` powerShell
-PS> Install-Module -Name Plaster
+Install-Module -Name Plaster
 ```
 
 ### Import Plaster
 
 ```powershell
-PS> Import-Module Plaster
+Import-Module Plaster
 ```
 
 ## Clone the template
 
 ``` powerShell
-PS> git clone https://github.com/PowerShellLibrary/PlasterTemplate-PSModule
+git clone https://github.com/PowerShellLibrary/PlasterTemplate-PSModule
 ```
 
 ## Creating a new module
@@ -31,7 +31,7 @@ There are two methods of creating a new module.
 * Create a hash table containing the required parameters and invoke ```Invoke-Plaster```
 
     ``` powerShell
-    PS> $parameters = @{
+    $parameters = @{
         DestinationPath   = "C:\repo\PS.Modules"
         TemplatePath      = "C:\repo\PlasterTemplate-PSModule"
         Author            = 'Alan'
@@ -39,7 +39,7 @@ There are two methods of creating a new module.
         ModuleName        = '_ModuleName_'
         ModuleDescription = '_Description_'
     }
-    PS> Invoke-Plaster @parameters
+    Invoke-Plaster @parameters
     ```
     output:
     ```
@@ -63,7 +63,7 @@ There are two methods of creating a new module.
 * Call ```Invoke-Plaster``` and fill parameters manually (template)
 
     ``` powerShell
-    PS> Invoke-Plaster -DestinationPath "C:\repo\PS.Modules" -TemplatePath "C:\repo\PlasterTemplate-PSModule"
+    Invoke-Plaster -DestinationPath "C:\repo\PS.Modules" -TemplatePath "C:\repo\PlasterTemplate-PSModule"
     ```
 
     output:
