@@ -1,6 +1,8 @@
 Clear-Host
-Import-Module -Name Pester -Force
-Import-Module .\<%= $PLASTER_PARAM_ModuleName %>\<%= $PLASTER_PARAM_ModuleName %>.psm1 -Force
+if (-not (Get-Module -Name Pester)) {
+    Import-Module -Name Pester -Force
+}
+Import-Module .\src\<%= $PLASTER_PARAM_ModuleName %>.psm1 -Force
 
 Describe '<%= $PLASTER_PARAM_ModuleName %>.Tests' {
     Context "C1" {
